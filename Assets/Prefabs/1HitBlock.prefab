@@ -81,6 +81,7 @@ MonoBehaviour:
   boom: {fileID: 8300000, guid: 93e40ad179701884186d887ae9727019, type: 3}
   bump: {fileID: 8300000, guid: 05d8496c42ac5994fa8f033cc3ccf11a, type: 3}
   hitSprites: []
+  smoke: {fileID: 1513657232780712, guid: 7bf30f834991ac1499bbca6b829ef6e2, type: 2}
 --- !u!212 &212283323545743212
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -114,7 +115,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 954e65a2e5aa5fe498def2cf8feaaad8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.07352948, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

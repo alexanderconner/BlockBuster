@@ -82,6 +82,7 @@ MonoBehaviour:
   bump: {fileID: 8300000, guid: 05d8496c42ac5994fa8f033cc3ccf11a, type: 3}
   hitSprites:
   - {fileID: 21300002, guid: 85bc2cb5c1b0d954d8dc3f93971b6c66, type: 3}
+  smoke: {fileID: 1513657232780712, guid: 7bf30f834991ac1499bbca6b829ef6e2, type: 2}
 --- !u!212 &212364650686485366
 SpriteRenderer:
   m_ObjectHideFlags: 1

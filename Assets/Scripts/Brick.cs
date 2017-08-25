@@ -11,6 +11,7 @@ public class Brick : MonoBehaviour {
 	private LevelManager levelmanager;
 	private bool isBreakable;
 	public Sprite[] hitSprites;
+	public GameObject smoke;
 
 	void Awake(){
 		breakableCount = 0;
@@ -26,19 +27,14 @@ public class Brick : MonoBehaviour {
 		timesHit = 0;
 		levelmanager = GameObject.FindObjectOfType<LevelManager> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		//breakableCount = GameObject.FindGameObjectsWithTag("Breakable").Length;
 
-	}
 
 	void OnCollisionExit2D(Collision2D coll) {
-		
 		if (isBreakable) {
 			HandleHits ();
 		}
 	}
+
 
 
 	void HandleHits() {
@@ -48,6 +44,7 @@ public class Brick : MonoBehaviour {
 			AudioSource.PlayClipAtPoint (boom, transform.position);
 			breakableCount--;
 			levelmanager.BrickDestroyed ();
+			PuffSmoke ();
 			Destroy (gameObject);
 		} else {
 			AudioSource.PlayClipAtPoint (bump, transform.position);
@@ -55,10 +52,18 @@ public class Brick : MonoBehaviour {
 		}
 	}
 
+	void PuffSmoke() {
+		GameObject puff = Instantiate (smoke, gameObject.transform.position, Quaternion.identity);
+		puff.GetComponent<ParticleSystem> ().startColor = this.GetComponent<SpriteRenderer> ().color;
+		Destroy(puff, puff.GetComponent<ParticleSystem>().duration);
+	}
+
 	void LoadSprites(){
 		int spriteIndex = timesHit - 1;
 		if (hitSprites [spriteIndex]) {
 			this.GetComponent<SpriteRenderer> ().sprite = hitSprites [spriteIndex];
+		} else {
+			Debug.LogError ("Brick Sprite missing");
 		}
 	}
 
